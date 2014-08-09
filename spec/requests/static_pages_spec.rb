@@ -13,7 +13,12 @@ describe "StaticPages" do
 
     it 'should have the right title' do
       visit '/static_pages/home'
-      expect(page).to have_title "#{title_prefix} | Home"
+      expect(page).to have_title "#{title_prefix}"
+    end
+
+    it 'should have the right title' do
+      visit '/static_pages/home'
+      expect(page).not_to have_title "| Home"
     end
 
   end
@@ -45,5 +50,21 @@ describe "StaticPages" do
     end
 
   end
+
+  describe "contact page" do
+
+    it 'should have the content "Contact"' do
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
+    it 'should have the right title' do
+      visit '/static_pages/contact'
+      expect(page).to have_title "#{title_prefix} | Contact"
+    end
+
+  end
+
+
 
 end
